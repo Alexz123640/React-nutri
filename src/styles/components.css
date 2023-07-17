@@ -1,0 +1,41 @@
+
+/*HOME*/
+.h1-home {
+  color: #292929;
+  text-align: start;
+  font-family: Montserrat;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.p-home {
+  color: #000;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 25px;
+  font-weight: 300;  
+}
+
+/*CATALOGO*/
+.search-box {
+  border: 1px solid rgba(0, 0, 0, 0.4862745098);
+  border-radius: 10px;
+}
+.search-box input {
+  width: 100%;
+  padding: 5px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  font-family: "Montserrat", sans-serif;
+}
+.search-box input:focus {
+  border: none;
+}
+.search-box .search {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 3px;
+  border-left: 1px solid rgba(0, 0, 0, 0.4745098039);
+}
