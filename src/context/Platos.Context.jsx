@@ -1,9 +1,11 @@
 import { createContext, useState } from "react";
-import { platos } from "../platos";
+import { useSelector } from "react-redux";
+
 
 export const PlatosContext = createContext();
-
 export const PlatosProvider = ({ children }) => {
+
+  const platos = useSelector(store=>store.platos)
   const [recetas, setRecetas] = useState(platos);
 
   return (

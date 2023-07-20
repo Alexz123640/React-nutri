@@ -2,11 +2,15 @@ import { Link } from "react-router-dom";
 import { Col, Container, Row } from "react-bootstrap";
 import BarraNavegacion from "../components/BarraNavegacion";
 import "../styles/components.css";
+import ListaUsuarios from "../components/ListaUsuarios";
+import { useAuth0 } from '@auth0/auth0-react'
 
 export default function Home() {
+  const { user}  = useAuth0();
+
   return (
     <main>
-      <BarraNavegacion link1="logout" link2="Estado Medico" />
+      <BarraNavegacion  link2="Estado Medico" />
       <Container className="mt-5">
         <Row>
           <Col lg={6} className="">
@@ -18,11 +22,14 @@ export default function Home() {
               Catalogo
             </Link>
           </Col>
-          <Col lg={6} className=""></Col>
+          <Col lg={6} className="">
+            
+          </Col>
         </Row>
+        <ListaUsuarios />
       </Container>
       
-      
+      {JSON.stringify(user)}
     </main>
   );
 }

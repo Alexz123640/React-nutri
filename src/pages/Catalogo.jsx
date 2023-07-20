@@ -13,7 +13,7 @@ export default function Catalogo() {
       <BarraNavegacion link1="logout" />      
       
       <Buscador />
-      <Container className="mt-5 d-flex fex-direction-row justify-content-between flex-wrap align-items-center">
+      <Container className="mt-3 d-flex fex-direction-row justify-content-between flex-wrap align-items-center">
         <Filtrar />
         <CardProducto />
       </Container>

@@ -7,43 +7,38 @@ import {
   TableHeaderCell,
   TableBody,
 } from "@tremor/react";
-import { useDispatch, useSelector } from "react-redux";
-import { deleteUserById } from "../redux/states/usersSlice";
+import { selectPlatos } from "../redux/states/platosSlice";
+import { useSelector } from "react-redux";
 
-export default function ListaUsuarios() {
-
-  const users = useSelector(store => store.users);
-  const dispatch = useDispatch();
-  const handlerDelete = (id) => {
-    dispatch(deleteUserById(id));
-  };
-
+export default function ListarPlatos() {
+  const platos = useSelector(selectPlatos);
+  const handlerDelete = () => {};
   return (
-    <div>
-      <Card>
+    <>
+      <Card className=" ">
         <Table>
           <TableHead>
             <TableRow>
               <TableHeaderCell>Id</TableHeaderCell>
-              <TableHeaderCell>Name</TableHeaderCell>
-              <TableHeaderCell>Email ($)</TableHeaderCell>
+              <TableHeaderCell>Nombre</TableHeaderCell>
+              <TableHeaderCell>Imagen </TableHeaderCell>
               <TableHeaderCell>Acctions</TableHeaderCell>
             </TableRow>
           </TableHead>
 
           <TableBody>
-            {users.map((item) => (
+            {platos.map((item) => (
               <TableRow key={item.id}>
                 <TableCell>{item.id}</TableCell>
-                <TableCell style={{ display: "flex" }}>
+                <TableCell>{item.nombre}</TableCell>
+                <TableCell>
                   <img
                     style={{ width: "32px", marginRight: "9px" }}
-                    src={item.imagen}
+                    src={`/img/${item.imagen}`}
                     alt="foo"
                   />
-                  {item.name}
                 </TableCell>
-                <TableCell>{item.correo}</TableCell>
+                
                 <TableCell style={{ display: "flex" }}>
                   <button type="button">
                     <svg
@@ -83,6 +78,6 @@ export default function ListaUsuarios() {
           </TableBody>
         </Table>
       </Card>
-    </div>
+    </>
   );
 }

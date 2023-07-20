@@ -14,16 +14,17 @@ export default function ListaEstadosMedicos() {
     <div>
       <h1 className="my-5 text-center">Tu Estado Medico</h1>
       <AccordionList className="max-w-md mx-auto">
-        <Accordion>
-          <AccordionHeader>Estado Medico</AccordionHeader>
-
-          <AccordionBody className="d-flex flex-wrap">
-            Codigo: {EstadosMedicos.id}, Peso: {EstadosMedicos.peso}kg, Altura:
-            {EstadosMedicos.altura}m, Masa Corporal:
-            {EstadosMedicos.masa_corporal}, Enfermedades:{" "}
-            {EstadosMedicos.enfermedades}, Alergias: {EstadosMedicos.alergias}
-          </AccordionBody>
-        </Accordion>
+        {EstadosMedicos.map((item) => (
+          <Accordion key={item.id}>
+            <AccordionHeader>Estado Medico</AccordionHeader>
+            <AccordionBody className="d-flex flex-wrap">
+            {item.id}, Peso: {item.peso}kg, Altura:
+            {item.altura}m, Masa Corporal:
+            {item.masa_corporal}, Enfermedades:{" "}
+            {item.enfermedades}, Alergias: {item.alergias}
+            </AccordionBody>
+          </Accordion>
+        ))}
       </AccordionList>
     </div>
   );

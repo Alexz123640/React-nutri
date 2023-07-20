@@ -1,27 +1,33 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const DEFAULT_ESTADO_MEDICO = 
-  {
-    id: "",
-    id_user: "",
-    masa_corporal: "",
-    fecha_nacimiento: "",
-    peso: "",
-    altura: "",
-    enfermedades: "",
-    alergias: ""
-  }
-  
-;
+const DEFAULT_ESTADO_MEDICO =
+[{
+  id: "",
+  id_user: "",
+  masa_corporal: "",
+  fecha_nacimiento: "",
+  peso: "",
+  altura: "",
+  enfermedades: [],
+  alergias: []
+}]
+
+let initialState = DEFAULT_ESTADO_MEDICO
+/** 
+const persistedState = localStorage.getItem("__redux__medico__");
+if (persistedState) {
+	initialState = JSON.parse(persistedState).estado_medico;
+}*/
 
 export const EstadoMedicoSlice = createSlice({
   name: "estados_medicos",
-  initialState: DEFAULT_ESTADO_MEDICO,
+  initialState: initialState,
   reducers: {
     createEstadoMedico: (state, action) => {
-      return action.payload 
+      return [{...action.payload}]
     },
   },
+  
 });
 
 export const { createEstadoMedico } = EstadoMedicoSlice.actions;

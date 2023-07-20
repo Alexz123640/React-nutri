@@ -1,105 +1,50 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
 const DEFAULT_USERS = [
   {
-    id: 1,
-    nombre: 'Juan',
+    id: '108235119319585714932',
+    nombre: "Alex C. H.",
     apellidos: 'González',
-    correo: 'juan.gonzalez@ejemplo.com',
+    correo: "alwx162@gmail.com",
     password: 'contraseña1',
-    rol: 'cliente',
+    rol: 'rol_DyQ2kMC4DITwe6y9',//admin
     estado: 'activo',
-    imagen: 'ruta/de/imagen1.jpg',
+    imagen: "https://lh3.googleusercontent.com/a/AAcHTtfEymNF00U0bnXPkkhXbtPBZ3R7GAGIWGyMphOzKN5ZkqU=s96-c",
     telefono: '111111111',
   },
   {
-    id: 2,
-    nombre: 'Alex',
+    id: "64ab97d29d26ee7e140487a1",
+    nombre: "alex@gmail.com",
     apellidos: 'Hernández',
-    correo: 'alex.hernandez@ejemplo.com',
+    correo: "alex@gmail.com",
     password: 'contraseña2',
-    rol: 'cliente',
+    rol: 'rol_5ZRs2l5BYD9lw06G',//cocinero
     estado: 'activo',
-    imagen: 'ruta/de/imagen2.jpg',
+    imagen: "https://s.gravatar.com/avatar/0312d0d39585741666c19c217ed769f7?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fal.png",
     telefono: '222222222',
   },
   {
-    id: 3,
-    nombre: 'Juan',
-    apellidos: 'López',
-    correo: 'juan.lopez@ejemplo.com',
-    password: 'contraseña3',
-    rol: 'cocinero',
+    id: "64ab97d29d26ee7e140487a2",
+    nombre: "alex@gmail.com",
+    apellidos: 'Hernández',
+    correo: "alex@gmail.com",
+    password: 'contraseña2',
+    rol: 'rol_JhEcS4TzKnGAbaZC',//USUARIO
     estado: 'activo',
-    imagen: 'ruta/de/imagen3.jpg',
-    telefono: '333333333',
+    imagen: "https://s.gravatar.com/avatar/0312d0d39585741666c19c217ed769f7?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fal.png",
+    telefono: '222222222',
   },
-  {
-    id: 4,
-    nombre: 'Alex',
-    apellidos: 'Martínez',
-    correo: 'alex.martinez@ejemplo.com',
-    password: 'contraseña4',
-    rol: 'cliente',
-    estado: 'inactivo',
-    imagen: 'ruta/de/imagen4.jpg',
-    telefono: '444444444',
-  },
-  {
-    id: 5,
-    nombre: 'Juan',
-    apellidos: 'Pérez',
-    correo: 'juan.perez@ejemplo.com',
-    password: 'contraseña5',
-    rol: 'admin',
-    estado: 'activo',
-    imagen: 'ruta/de/imagen5.jpg',
-    telefono: '555555555',
-  },
-  {
-    id: 6,
-    nombre: 'Alex',
-    apellidos: 'Ramírez',
-    correo: 'alex.ramirez@ejemplo.com',
-    password: 'contraseña6',
-    rol: 'cliente',
-    estado: 'activo',
-    imagen: 'ruta/de/imagen6.jpg',
-    telefono: '666666666',
-  },
-  {
-    id: 7,
-    nombre: 'Juan',
-    apellidos: 'Sánchez',
-    correo: 'juan.sanchez@ejemplo.com',
-    password: 'contraseña7',
-    rol: 'cocinero',
-    estado: 'activo',
-    imagen: 'ruta/de/imagen7.jpg',
-    telefono: '777777777',
-  }
 ]
-
-const User = {
-  nombre: '',
-  apellidos: '',
-  correo: '',
-  password: '',
-  rol: '',
-  estado: '',
-  imagen: '',
-  telefono: ''
-};
-const UserWithId = {
-  ...User,
-  id: '',
-};
 
 
 export const UserSlice = createSlice({
   name: 'users',
   initialState: DEFAULT_USERS,
   reducers: {
+    createUser:(state,action)=>{
+      return [...state,{...action.payload}]
+    },
     deleteUserById: (state, action) => {
       const id = action.payload;
       return state.filter((user) => user.id != id);
@@ -108,4 +53,4 @@ export const UserSlice = createSlice({
 })
 
 
-export const { deleteUserById } = UserSlice.actions;
+export const { createUser,deleteUserById } = UserSlice.actions;
