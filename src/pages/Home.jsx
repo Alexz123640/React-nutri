@@ -18,7 +18,7 @@ export default function Home() {
               ENCUENTRA PLATOS Y RECETAS PERSONALIZADAS
             </h1>
             <p className="p-home">Todo balanceados a tus especificaciones</p>
-            <Link to="/catalogo" className="btn btn-outline-primary mt-4">
+            <Link to="/catalogo" className="btn btn-outline-danger mt-4">
               Catalogo
             </Link>
           </Col>

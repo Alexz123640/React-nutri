@@ -3,17 +3,20 @@ import BarraNavegacion from "../components/BarraNavegacion";
 import { Toaster, toast } from "sonner";
 import { useDispatch, useSelector } from "react-redux";
 import { createEstadoMedico } from "../redux/states/medicoSlice";
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import { rebornPlato, selectPlatos } from "../redux/states/platosSlice";
+import { enfermedades } from "../models/enfermedades";
+import ListaEstadosMedicos from "../components/ListaEstadosMedicos";
+import { useNavigate } from "react-router-dom";
 
 const EstadoMedico = () => {
+  const navigate = useNavigate();
   const Platos = useSelector(selectPlatos);
   const EstadosMedicoss = useSelector((store) => store.estados_medicos);
 
   const dispatch = useDispatch();
   const [enfer, setEnfer] = useState([]);
-  const [alerg, setAlerg] = useState([]);
+  const [alerg, setAlerg] = useState();
 
   const inputEnferChange = (e) => {
     setEnfer(e.target.value.split(","));
@@ -40,11 +43,14 @@ const EstadoMedico = () => {
 
     const id = "10";
     const id_user = "2";
-    const masa_corporal = formData.get("peso") * formData.get("altura") ** 2;
+    const masa_corporal = (
+      formData.get("peso") *
+      formData.get("altura") ** 2
+    ).toFixed(2);
     const fecha_nacimiento = formData.get("fecha_nacimiento");
     const peso = formData.get("peso");
     const altura = formData.get("altura");
-    const enfermedades = enfer;
+    const enfermedades = formData.get("enfermedad");
     const alergias = alerg;
 
     if (!fecha_nacimiento || !peso || !altura) {
@@ -63,6 +69,7 @@ const EstadoMedico = () => {
         alergias: alergias,
       })
     );
+
     toast.success("Estado medico registrado 😁");
     form.reset();
   };
@@ -71,8 +78,9 @@ const EstadoMedico = () => {
 
   const platossinalergia = Platos.filter((plato) => {
     const ingredientes = Object.keys(plato.ingredientes);
+
     for (const ingrediente of ingredientes) {
-      if (alergiasEstadoMedico.includes(ingrediente)) {
+      if (alergiasEstadoMedico.includes(ingrediente.trim())) {
         return false;
       }
     }
@@ -84,7 +92,7 @@ const EstadoMedico = () => {
 
   const handleAvanzar = () => {
     dispatch(rebornPlato(platossinalergia));
-    console.log(Platos);
+    navigate("/catalogo");
   };
 
   return (
@@ -93,8 +101,11 @@ const EstadoMedico = () => {
       <Container className="mt-4">
         <Form onSubmit={handleEnviar}>
           <Row className="d-flex justify-content-between">
-            <Col lg={3} className="form-group">
-              <label htmlFor="exampleInputEmail1" className="form-label mt-4">
+            <Col lg={4} className="form-group">
+              <label
+                htmlFor="exampleInputEmail1"
+                className="form-label mt-4 text-black"
+              >
                 Fecha de Nacimiento
               </label>
               <input
@@ -104,18 +115,20 @@ const EstadoMedico = () => {
                 id="exampleInputEmail1"
               />
             </Col>
-            <Col lg={3} class="form-group">
-              <label className="form-label mt-4">Example select</label>
-              <select className="form-select" id="exampleSelect1">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+            <Col lg={4} className="form-group">
+              <label className="form-label mt-4 text-black">Enfermedades</label>
+              <select
+                name="enfermedad"
+                className="form-select"
+                id="exampleSelect1"
+              >
+                {enfermedades.map((item) => (
+                  <option key={item.enfermedad}>{item.enfermedad}</option>
+                ))}
               </select>
             </Col>
             <Col lg={4} className="form-group  ">
-              <label className="form-label mt-4">Genero</label>
+              <label className="form-label mt-4 text-black">Genero</label>
               <div className="form-check">
                 <input
                   className="form-check-input"
@@ -124,7 +137,10 @@ const EstadoMedico = () => {
                   id="optionsRadios1"
                   value="option1"
                 />
-                <label className="form-check-label" htmlFor="optionsRadios1">
+                <label
+                  className="form-check-label text-black"
+                  htmlFor="optionsRadios1"
+                >
                   Masculino
                 </label>
               </div>
@@ -136,14 +152,17 @@ const EstadoMedico = () => {
                   id="optionsRadios2"
                   value="option2"
                 />
-                <label className="form-check-label" htmlFor="optionsRadios2">
+                <label
+                  className="form-check-label text-black"
+                  htmlFor="optionsRadios2"
+                >
                   Femenino
                 </label>
               </div>
             </Col>
 
-            <Col lg={3} className="form-group  ">
-              <label className="form-label mt-4">Peso</label>
+            <Col lg={4} className="form-group  ">
+              <label className="form-label mt-4 text-black">Peso</label>
               <input
                 name="peso"
                 type="text"
@@ -152,8 +171,8 @@ const EstadoMedico = () => {
                 placeholder="Ingrese su peso"
               />
             </Col>
-            <Col lg={3} className="form-group  ">
-              <label className="form-label mt-4">Altura</label>
+            <Col lg={4} className="form-group  ">
+              <label className="form-label mt-4 text-black">Altura</label>
               <input
                 name="altura"
                 type="text"
@@ -162,22 +181,9 @@ const EstadoMedico = () => {
                 placeholder="Ingrese altura"
               />
             </Col>
+
             <Col lg={4} className="form-group  ">
-              <label className="form-label mt-4">Enfermedades</label>
-              <input
-                name="enfermedades"
-                type="text"
-                className="form-control"
-                id="exampleInputEmail1"
-                placeholder="Ingrese sus enfermedades"
-                onChange={inputEnferChange}
-              />
-              <small id="emailHelp" className="form-text text-muted">
-                Separe las Enfermedades con una coma(,)
-              </small>
-            </Col>
-            <Col lg={3} className="form-group  ">
-              <label className="form-label mt-4">Alergias</label>
+              <label className="form-label mt-4 text-black">Alergias</label>
               <input
                 name="alergias"
                 type="text"
@@ -190,24 +196,25 @@ const EstadoMedico = () => {
                 Separe las Alergias con una coma(,)
               </small>
             </Col>
-            <Col lg={3}></Col>
+            <Col lg={4}></Col>
           </Row>
           <div className="d-flex justify-content-between">
-            <button type="submit" className="btn btn-outline-primary mt-5">
+            <button type="submit" className="btn btn-outline-danger mt-5">
               Guardar
             </button>
-            <Link
-              to="/catalogo"
+            <button
               type="submit"
-              className="btn btn-outline-primary mt-5"
+              className="btn btn-outline-danger mt-5"
               onClick={handleAvanzar}
             >
               Avanzar
-            </Link>
+            </button>
           </div>
         </Form>
+        <ListaEstadosMedicos />
       </Container>
       <Toaster position="top-right" />
+      
     </>
   );
 };

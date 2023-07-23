@@ -69,7 +69,7 @@ export default function Filtrar() {
           <div className="d-flex flex-wrap">
             {listaIngredientes.map((nombre, index) => (
               <Button
-                className="bg-dark m-1 btn-sm"
+                className="bg-primary m-1 btn-sm"
                 key={index}
                 onClick={() => handlerQuitar(nombre)}
               >
@@ -102,14 +102,14 @@ export default function Filtrar() {
           </Col>
           <div className="d-flex justify-content-around mt-3">
             <button
-              className="btn btn-outline-primary btn-sm"
+              className="btn btn-outline-danger btn-sm"
               onClick={() => handleAgregarInput(ingrediente)}
             >
               Agregar Ingrediente
             </button>
 
             <button
-              className="btn btn-outline-primary btn-sm"
+              className="btn btn-outline-danger btn-sm"
               onClick={handleFiltrarClick}
             >
               Filtrar

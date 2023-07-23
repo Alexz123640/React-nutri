@@ -1,31 +1,67 @@
 import { useSelector } from "react-redux";
 import {
-  Accordion,
-  AccordionHeader,
-  AccordionBody,
-  AccordionList,
+
+  Card,
+  Table,
+  TableHead,
+  TableRow,
+  TableHeaderCell,
+  TableBody,
+  TableCell,
+  Text,
+  Title,
 } from "@tremor/react";
 
 export default function ListaEstadosMedicos() {
   const EstadosMedicos = useSelector((store) => store.estados_medicos);
-  console.log(EstadosMedicos);
-  console.log(EstadosMedicos);
+
+  const fechaNacimiento = Number(
+    EstadosMedicos[0].fecha_nacimiento.substring(0, 4)
+  );
+
+  const fechaActual = new Date();
+  console.log(fechaActual);
+  console.log(fechaNacimiento);
+
+  const edad = fechaActual.getFullYear() - fechaNacimiento;
+  console.log(fechaNacimiento);
+  console.log(edad); // 0
+
   return (
     <div>
-      <h1 className="my-5 text-center">Tu Estado Medico</h1>
-      <AccordionList className="max-w-md mx-auto">
-        {EstadosMedicos.map((item) => (
-          <Accordion key={item.id}>
-            <AccordionHeader>Estado Medico</AccordionHeader>
-            <AccordionBody className="d-flex flex-wrap">
-            {item.id}, Peso: {item.peso}kg, Altura:
-            {item.altura}m, Masa Corporal:
-            {item.masa_corporal}, Enfermedades:{" "}
-            {item.enfermedades}, Alergias: {item.alergias}
-            </AccordionBody>
-          </Accordion>
-        ))}
-      </AccordionList>
+      <Card className="mt-5">
+        <Title className="text-center">Mi esado medico</Title>
+        <Table className="mt-5">
+          <TableHead>
+            <TableRow>              
+              <TableHeaderCell>Masa Corporal</TableHeaderCell>
+              <TableHeaderCell>Edad</TableHeaderCell>
+              <TableHeaderCell>Peso</TableHeaderCell>
+              <TableHeaderCell>Altura</TableHeaderCell>
+              <TableHeaderCell>Enfermedad</TableHeaderCell>
+              <TableHeaderCell>Alergias</TableHeaderCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {EstadosMedicos.map((item) => (
+              <TableRow key={item.id}>              
+                <TableCell>
+                  <Text>{item.masa_corporal}</Text>
+                </TableCell>
+                <TableCell>
+                  <Text>{edad}</Text>
+                </TableCell>
+                <TableCell>{item.peso}</TableCell>
+                <TableCell>{item.altura}</TableCell>
+                <TableCell>{item.enfermedades}</TableCell>
+                <TableCell>
+                  <Text>{item.alergias}</Text>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </Card>
     </div>
   );
 }

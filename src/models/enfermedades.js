@@ -8,6 +8,18 @@ export const enfermedades = [
     ingredientesEvitar: ["Azucar", "Jarabe de maiz", "Bebidas azucaradas", "Harinas refinadas"]
   },
   {
+    enfermedad: "Bronquitis",
+    ingredientesEvitar: ["tabaco", "Polvo"]
+  },
+  {
+    enfermedad: "Gripe",
+    ingredientesEvitar: ["azucar", "Bebidas frias", "Alcohol", "lacteos"]
+  },
+  {
+    enfermedad: "Dolor de garganta",
+    ingredientesEvitar: ["Alimentos picantes", "Alimentos calientes", "alimentos frios", "citricos", "Bebidas carbonatadas"]
+  },
+  {
     enfermedad: "Cardiovasculares",
     ingredientesEvitar: ["carne", "lacteos", "frituras", "Sal", "Azucar"]
   },
@@ -39,10 +51,6 @@ export const enfermedades = [
     enfermedad: "Enfermedad de Hashimoto",
     ingredientesEvitar: ["Soja", "Col", "Brocoli", "Nabos", "Coliflor", "Frijoles"]
   },
-  {
-    enfermedad: "Enfermedad celiaca",
-    ingredientesEvitar: ["Trigo", "Cebada", "Centeno", "Pan", "Pasta", "Galletas", "Salsas"]
-  },
 
   {
     enfermedad: "Osteoporosis",
@@ -69,16 +77,5 @@ export const enfermedades = [
     enfermedad: "Sindrome del intestino irritable (SII)",
     ingredientesEvitar: ["Cebolla", "Ajo", "Brocoli", "Repollo", "Legumbres", "Frituras"]
   },
-  {
-    enfermedad: "Bronquitis",
-    ingredientesEvitar: ["tabaco", "Polvo"]
-  },
-  {
-    enfermedad: "Gripe",
-    ingredientesEvitar: ["azucar", "Bebidas frias", "Alcohol", "lacteos"]
-  },
-  {
-    enfermedad: "Dolor de garganta",
-    ingredientesEvitar: ["Alimentos picantes", "Alimentos calientes", "alimentos frios", "citricos", "Bebidas carbonatadas"]
-  }
+ 
 ];

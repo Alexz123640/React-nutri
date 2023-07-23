@@ -9,9 +9,9 @@ const DEFAULT_PLATOS = [
     "ingredientes": {
       "espagueti": "15g",
       "panceta": "150g",
-      "yemas de huevo": "3",
+      "huevo": "3",
       "queso": "50g",
-      "pimienta negra": "al gusto"
+      "pimienta": "al gusto"
     },
     "valorNutricional": {
       "proteinas": "20g",
@@ -26,12 +26,12 @@ const DEFAULT_PLATOS = [
     "autor": "Maria Gomez",
     "descripcion": "Delicioso plato peruano que combina carne de res, cebolla, tomate y papas fritas, sazonado con salsa de soja y servido con arroz blanco.",
     "ingredientes": {
-      "carne de res": "200g",
+      "carne": "200g",
       "cebolla": "1",
       "tomate": "1",
       "papas": "150g",
       "salsa de soja": "30ml",
-      "arroz blanco": "150g"
+      "arroz ": "150g"
     },
     "valorNutricional": {
       "proteinas": "25g",
@@ -49,9 +49,9 @@ const DEFAULT_PLATOS = [
     "autor": "Carlos Ramirez",
     "descripcion": "Plato fresco y delicioso hecho con pescado o mariscos marinados en jugo de limon y mezclado con cebolla morada, aji, cilantro y camote.",
     "ingredientes": {
-      "pescado o mariscos": "200g",
+      "pescado": "200g",
       "limon": "4",
-      "cebolla morada": "1",
+      "cebolla": "1",
       "aji": "1",
       "cilantro": "20g",
       "camote": "150g"
@@ -72,8 +72,8 @@ const DEFAULT_PLATOS = [
     "autor": "Ricardo Torres",
     "descripcion": "Brochetas de corazon de res marinadas en una sabrosa mezcla de aji panca, ajos y vinagre, asadas y servidas con papas y salsa de huacatay.",
     "ingredientes": {
-      "corazon de res": "200g",
-      "aji panca": "30g",
+      "corazon": "200g",
+      "aji": "30g",
       "ajos": "2",
       "vinagre": "30ml",
       "papas": "150g",
@@ -117,14 +117,14 @@ const DEFAULT_PLATOS = [
     "autor": "Marta Gómez",
     "descripcion": "Un delicioso sándwich relleno de jugosa carne asada, vegetales frescos y una sabrosa salsa.",
     "ingredientes": {
-      "pan de sándwich": "2 rebanadas",
-      "carne asada": "150g",
+      "pan": "2 rebanadas",
+      "carne": "150g",
       "cebolla": "1/2 unidad",
       "tomate": "1/2 unidad",
       "lechuga": "unas hojas",
       "mostaza": "al gusto",
       "mayonesa": "al gusto",
-      "sal y pimienta": "al gusto"
+      "sal": "al gusto"
     },
     "valorNutricional": {
       "proteinas": "25g",
@@ -142,11 +142,11 @@ const DEFAULT_PLATOS = [
     "autor": "Laura Rodríguez",
     "descripcion": "Un batido cremoso y delicioso hecho con plátano maduro, leche, proteína en polvo y un toque de canela.",
     "ingredientes": {
-      "plátano maduro": "1 unidad",
+      "platano": "1 unidad",
       "leche": "250ml",
-      "proteína en polvo (sabor vainilla)": "1 cucharada",
-      "miel o edulcorante": "al gusto",
-      "canela en polvo": "una pizca",
+      "proteina": "1 cucharada",
+      "miel": "al gusto",
+      "canela": "una pizca",
       "hielo": "opcional"
     },
     "valorNutricional": {

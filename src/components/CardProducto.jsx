@@ -25,7 +25,7 @@ export default function CardProducto() {
               <Card.Text>
                 Autor: <label>{receta.autor}</label>
               </Card.Text>
-              <Link to={`/detalle/${receta.id}`} type="button" variant="" className="btn bg-black mt-2 btn-sm text-white">Ver Detalle</Link>
+              <Link to={`/detalle/${receta.id}`} type="button" variant="" className="btn bg-danger mt-2 btn-sm text-white">Ver Detalle</Link>
             </Card.Body>
           </Card>
         </div>

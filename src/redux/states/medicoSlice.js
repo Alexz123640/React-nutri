@@ -13,11 +13,10 @@ const DEFAULT_ESTADO_MEDICO =
 }]
 
 let initialState = DEFAULT_ESTADO_MEDICO
-/** 
 const persistedState = localStorage.getItem("__redux__medico__");
 if (persistedState) {
-	initialState = JSON.parse(persistedState).estado_medico;
-}*/
+	initialState = JSON.parse(persistedState).estados_medicos;
+}
 
 export const EstadoMedicoSlice = createSlice({
   name: "estados_medicos",

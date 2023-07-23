@@ -11,6 +11,7 @@ import Rating from "./components/Rating";
 
 export default function Detalle() {
   const [activeComponent, setActiveComponent] = useState("details");
+
   const handleClick = (component) => {
     setActiveComponent(component);
   };
@@ -23,7 +24,7 @@ export default function Detalle() {
 
   return (
     <main className="">
-      <BarraNavegacion link1="catalogo"/>
+      <BarraNavegacion link1="catalogo" />
       <Container className="container mt-5">
         <Row>
           <Col xl={6}>
@@ -43,11 +44,24 @@ export default function Detalle() {
             {activeComponent === "preparation" && <Preparation />}
             {activeComponent === "rating" && <Rating />}
             <section id="opciones-plato" className=" mt-5">
-              <button onClick={() => handleClick("details")}>Detalle</button>
-              <button onClick={() => handleClick("preparation")}>
+              <button
+                onClick={() => handleClick("details")}
+                className="text-danger"
+              >
+                Detalle
+              </button>
+              <button
+                onClick={() => handleClick("preparation")}
+                className="text-danger"
+              >
                 Preparacion
               </button>
-              <button onClick={() => handleClick("rating")}>Valoracion</button>
+              <button
+                onClick={() => handleClick("rating")}
+                className="text-danger"
+              >
+                Valoracion
+              </button>
             </section>
           </Col>
         </Row>
