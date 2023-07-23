@@ -1,7 +1,6 @@
 import { Col, Container, Form, Row } from "react-bootstrap";
 import BarraNavegacion from "../components/BarraNavegacion";
 import { Toaster, toast } from "sonner";
-import ListaEstadosMedicos from "../components/ListaEstadosMedicos";
 import { useDispatch, useSelector } from "react-redux";
 import { createEstadoMedico } from "../redux/states/medicoSlice";
 import { Link } from "react-router-dom";
@@ -41,7 +40,7 @@ const EstadoMedico = () => {
 
     const id = "10";
     const id_user = "2";
-    const masa_corporal = formData.get("masa_corporal");
+    const masa_corporal = formData.get("peso") * formData.get("altura") ** 2;
     const fecha_nacimiento = formData.get("fecha_nacimiento");
     const peso = formData.get("peso");
     const altura = formData.get("altura");
@@ -79,14 +78,14 @@ const EstadoMedico = () => {
     }
     return true;
   });
-  console.log(Platos)
+  console.log(Platos);
   console.log("nuevo platos", platossinalergia);
-  console.log("estados m",EstadosMedicoss);
+  console.log("estados m", EstadosMedicoss);
 
-  const handleAvanzar=()=>{
-    dispatch(rebornPlato(platossinalergia))
-    console.log(Platos)
-  }
+  const handleAvanzar = () => {
+    dispatch(rebornPlato(platossinalergia));
+    console.log(Platos);
+  };
 
   return (
     <>
@@ -105,15 +104,15 @@ const EstadoMedico = () => {
                 id="exampleInputEmail1"
               />
             </Col>
-            <Col lg={3} className="form-group  ">
-              <label className="form-label mt-4">Masa Corporal</label>
-              <input
-                name="masa_corporal"
-                type="text"
-                className="form-control"
-                id="exampleInputEmail1"
-                placeholder="Ingrese su masa corporal"
-              />
+            <Col lg={3} class="form-group">
+              <label className="form-label mt-4">Example select</label>
+              <select className="form-select" id="exampleSelect1">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
             </Col>
             <Col lg={4} className="form-group  ">
               <label className="form-label mt-4">Genero</label>
@@ -207,7 +206,6 @@ const EstadoMedico = () => {
             </Link>
           </div>
         </Form>
-        <ListaEstadosMedicos />
       </Container>
       <Toaster position="top-right" />
     </>

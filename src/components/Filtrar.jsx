@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { PlatosContext } from "../context/Platos.Context";
-import { platos } from "../platos";
 import { useSelector } from "react-redux";
 
 export default function Filtrar() {
@@ -18,7 +17,7 @@ export default function Filtrar() {
       return;
     }
     setListaIngredientes([...listaIngredientes, dato]);
-    setRecetas(platos);
+    setRecetas(Platos);
   };
   const handleChange = (event) => {
     setIngrediente(event.target.value);
@@ -36,7 +35,7 @@ export default function Filtrar() {
       return;
     }
     setListaIngredientes([...listaIngredientes, dato]);
-    setRecetas(platos);
+    setRecetas(Platos);
     setIngrediente("");
   };
 
@@ -56,7 +55,7 @@ export default function Filtrar() {
     });
     console.log(platosFiltrados.length);
     if (listaIngredientes.length === 0) {
-      setRecetas(platos);
+      setRecetas(Platos);
     } else {
       setRecetas(platosFiltrados);
     }
