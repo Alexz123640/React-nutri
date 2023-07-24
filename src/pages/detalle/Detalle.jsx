@@ -56,12 +56,7 @@ export default function Detalle() {
               >
                 Preparacion
               </button>
-              <button
-                onClick={() => handleClick("rating")}
-                className="text-danger"
-              >
-                Valoracion
-              </button>
+              
             </section>
           </Col>
         </Row>

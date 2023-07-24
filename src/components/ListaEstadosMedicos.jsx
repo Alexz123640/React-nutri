@@ -1,6 +1,5 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
-
   Card,
   Table,
   TableHead,
@@ -11,13 +10,19 @@ import {
   Text,
   Title,
 } from "@tremor/react";
+import { ReiniciarEstadoMedico } from "../redux/states/medicoSlice";
 
 export default function ListaEstadosMedicos() {
   const EstadosMedicos = useSelector((store) => store.estados_medicos);
+  const dispatch = useDispatch()
 
   const fechaNacimiento = Number(
     EstadosMedicos[0].fecha_nacimiento.substring(0, 4)
   );
+
+  const handleQuitar =()=>{
+    dispatch(ReiniciarEstadoMedico())
+  }
 
   const fechaActual = new Date();
   console.log(fechaActual);
@@ -33,18 +38,19 @@ export default function ListaEstadosMedicos() {
         <Title className="text-center">Mi esado medico</Title>
         <Table className="mt-5">
           <TableHead>
-            <TableRow>              
+            <TableRow>
               <TableHeaderCell>Masa Corporal</TableHeaderCell>
               <TableHeaderCell>Edad</TableHeaderCell>
               <TableHeaderCell>Peso</TableHeaderCell>
               <TableHeaderCell>Altura</TableHeaderCell>
               <TableHeaderCell>Enfermedad</TableHeaderCell>
               <TableHeaderCell>Alergias</TableHeaderCell>
+              
             </TableRow>
           </TableHead>
           <TableBody>
             {EstadosMedicos.map((item) => (
-              <TableRow key={item.id}>              
+              <TableRow key={item.id}>
                 <TableCell>
                   <Text>{item.masa_corporal}</Text>
                 </TableCell>
@@ -57,6 +63,7 @@ export default function ListaEstadosMedicos() {
                 <TableCell>
                   <Text>{item.alergias}</Text>
                 </TableCell>
+                
               </TableRow>
             ))}
           </TableBody>

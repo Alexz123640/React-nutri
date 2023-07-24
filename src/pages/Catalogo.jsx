@@ -10,7 +10,7 @@ export default function Catalogo() {
 
   return (
     <PlatosProvider>
-      <BarraNavegacion link1="logout" />      
+      <BarraNavegacion link1="logout" link2="estado medico" />      
       
       <Buscador />
       <Container className="mt-3 d-flex fex-direction-row justify-content-between flex-wrap align-items-center">

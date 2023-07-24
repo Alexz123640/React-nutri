@@ -25,8 +25,7 @@ export const Perfil = () => {
             width="45px"
           />
         </Dropdown.Toggle>
-        <Dropdown.Menu className="">
-          <Dropdown.Item to="/perfil">Perfil</Dropdown.Item>
+        <Dropdown.Menu className="">          
           <Dropdown.Item onClick={() => navigate("/cocinero")}>Cocinar</Dropdown.Item>
           <Dropdown.Item
             onClick={() => logout({ returnTo: window.location.origin })}

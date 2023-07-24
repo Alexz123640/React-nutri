@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createEstadoMedico } from "../redux/states/medicoSlice";
 import { useState } from "react";
 import { rebornPlato, selectPlatos } from "../redux/states/platosSlice";
-import { enfermedades } from "../models/enfermedades";
+import { Enfermedades } from "../models/enfermedades";
 import ListaEstadosMedicos from "../components/ListaEstadosMedicos";
 import { useNavigate } from "react-router-dom";
 
@@ -15,17 +15,10 @@ const EstadoMedico = () => {
   const EstadosMedicoss = useSelector((store) => store.estados_medicos);
 
   const dispatch = useDispatch();
-  const [enfer, setEnfer] = useState([]);
+  
   const [alerg, setAlerg] = useState();
-
-  const inputEnferChange = (e) => {
-    setEnfer(e.target.value.split(","));
-    const enfermedades = e.target.value
-      .split(",")
-      .map((enfermedad) => enfermedad.trim())
-      .filter((enfermedad) => enfermedad !== ""); // Para filtrar posibles entradas vacías
-    setEnfer(enfermedades);
-  };
+  
+  const [cadenaenfer, setCadenaenfer] = useState(EstadosMedicoss[0].enfermedades);
 
   const inputAlergChange = (e) => {
     const alergias = e.target.value
@@ -50,10 +43,11 @@ const EstadoMedico = () => {
     const fecha_nacimiento = formData.get("fecha_nacimiento");
     const peso = formData.get("peso");
     const altura = formData.get("altura");
-    const enfermedades = formData.get("enfermedad");
+    const enfermedadForm = formData.get("enfermedad");
+    setCadenaenfer(enfermedadForm);
     const alergias = alerg;
 
-    if (!fecha_nacimiento || !peso || !altura) {
+    if (!fecha_nacimiento || !peso || !altura || !enfermedadForm) {
       toast.error("Faltan datos");
       return;
     }
@@ -65,7 +59,7 @@ const EstadoMedico = () => {
         fecha_nacimiento: fecha_nacimiento,
         peso: peso,
         altura: altura,
-        enfermedades: enfermedades,
+        enfermedades: enfermedadForm,
         alergias: alergias,
       })
     );
@@ -76,7 +70,77 @@ const EstadoMedico = () => {
 
   const alergiasEstadoMedico = EstadosMedicoss[0].alergias;
 
-  const platossinalergia = Platos.filter((plato) => {
+//CALCULO DE TIPO DE PERSONA----------------------------------------------------
+function calcularEstadoPesoAltura(altura, peso) {
+  if (altura >= 1.60 && altura <= 1.69) {
+    if (peso < 54) {
+      return 'delgado';
+    } else if (peso >= 54 && peso <= 68) {
+      return 'normal';
+    } else {
+      return 'sobrepeso';
+    }
+  } else if (altura >= 1.70 && altura <= 1.79) {
+    // Repetir el mismo patrón para los otros rangos de altura
+    if (peso < 59) {
+      return 'delgado';
+    } else if (peso >= 59 && peso <= 74) {
+      return 'normal';
+    } else {
+      return 'sobrepeso';
+    }
+  } else if (altura >= 1.80 && altura <= 1.89) {
+    if (peso < 64) {
+      return 'delgado';
+    } else if (peso >= 64 && peso <= 81) {
+      return 'normal';
+    } else {
+      return 'sobrepeso';
+    }
+  } else if (altura >= 1.90 && altura <= 1.99) {
+    if (peso < 69) {
+      return 'delgado';
+    } else if (peso >= 69 && peso <= 87) {
+      return 'normal';
+    } else {
+      return 'sobrepeso';
+    }
+  } else if (altura >= 2.00 && altura <= 2.10) {
+    if (peso < 74) {
+      return 'delgado';
+    } else if (peso >= 74 && peso <= 94) {
+      return 'normal';
+    } else {
+      return 'sobrepeso';
+    }
+  } else {
+    // Si la altura no está dentro de ningún rango válido, retornamos 'desconocido'
+    return 'desconocido';
+  }
+}
+let persona =calcularEstadoPesoAltura(EstadosMedicoss[0].altura, EstadosMedicoss[0].peso)
+
+//CALCULO DE PLATOS SEGUN PERSONA------------------------------------------------
+const filtrarPlatosSegunPersona = (persona) => {
+  console.log(persona)
+  if (persona === "delgado") {
+    // Filtrar platos con calorias mayores a 15
+    return Platos.filter((plato) => parseFloat(plato.valorNutricional.proteinas) > 15);
+  } else if (persona === "sobrepeso") {
+    // Filtrar platos con calorias menores a 15
+    return Platos.filter((plato) => parseFloat(plato.valorNutricional.calorias) < 220);
+  } else {
+    // Si no es "delgado" ni "sobrepeso", devolver el mismo array de platos
+    return Platos;
+  }
+};
+
+// Ejemplo de uso
+const platosPersona = filtrarPlatosSegunPersona(persona);
+console.log(platosPersona)
+
+//CALCULO DE PLATOS SIN ALERGIAS------------------------------------------------
+  const platossinalergia = platosPersona.filter((plato) => {
     const ingredientes = Object.keys(plato.ingredientes);
 
     for (const ingrediente of ingredientes) {
@@ -86,12 +150,33 @@ const EstadoMedico = () => {
     }
     return true;
   });
-  console.log(Platos);
-  console.log("nuevo platos", platossinalergia);
-  console.log("estados m", EstadosMedicoss);
+  
+  console.log(platossinalergia);
+  //-----------------------------------------------------
+
+  const enfermedad = Enfermedades.find(
+    (enfermedad) => enfermedad.enfermedad === cadenaenfer
+  );
+  console.log(cadenaenfer);
+
+  // Filtrar los platos que no contengan ingredientes a evitar
+  const PlatosSinIngredientesEvitar = platossinalergia.filter((plato) => {
+    const ingredientesEvitar = enfermedad.ingredientesEvitar;
+    const platoIngredientes = Object.keys(plato.ingredientes);
+
+    // Verificar si el plato contiene ingredientes a evitar
+    const contieneIngredientesEvitar = platoIngredientes.some((ingrediente) =>
+      ingredientesEvitar.includes(ingrediente)
+    );
+
+    // Si no contiene ingredientes a evitar, incluir el plato en el nuevo array
+    return !contieneIngredientesEvitar;
+  });
+  //-----------------------------------------------------
 
   const handleAvanzar = () => {
-    dispatch(rebornPlato(platossinalergia));
+    
+    dispatch(rebornPlato(PlatosSinIngredientesEvitar));
     navigate("/catalogo");
   };
 
@@ -122,7 +207,7 @@ const EstadoMedico = () => {
                 className="form-select"
                 id="exampleSelect1"
               >
-                {enfermedades.map((item) => (
+                {Enfermedades.map((item) => (
                   <option key={item.enfermedad}>{item.enfermedad}</option>
                 ))}
               </select>
@@ -214,7 +299,6 @@ const EstadoMedico = () => {
         <ListaEstadosMedicos />
       </Container>
       <Toaster position="top-right" />
-      
     </>
   );
 };

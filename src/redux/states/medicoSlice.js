@@ -8,8 +8,8 @@ const DEFAULT_ESTADO_MEDICO =
   fecha_nacimiento: "",
   peso: "",
   altura: "",
-  enfermedades: [],
-  alergias: []
+  enfermedades: "",
+  alergias: [],
 }]
 
 let initialState = DEFAULT_ESTADO_MEDICO
@@ -25,8 +25,11 @@ export const EstadoMedicoSlice = createSlice({
     createEstadoMedico: (state, action) => {
       return [{...action.payload}]
     },
+    ReiniciarEstadoMedico:()=>{
+       return initialState;
+    }
   },
   
 });
 
-export const { createEstadoMedico } = EstadoMedicoSlice.actions;
+export const { createEstadoMedico,ReiniciarEstadoMedico } = EstadoMedicoSlice.actions;

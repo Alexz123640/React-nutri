@@ -3,10 +3,10 @@ import { Col, Container, Row } from "react-bootstrap";
 import BarraNavegacion from "../components/BarraNavegacion";
 import "../styles/components.css";
 import ListaUsuarios from "../components/ListaUsuarios";
-import { useAuth0 } from '@auth0/auth0-react'
+
 
 export default function Home() {
-  const { user}  = useAuth0();
+ 
 
   return (
     <main>
@@ -23,13 +23,13 @@ export default function Home() {
             </Link>
           </Col>
           <Col lg={6} className="">
-            
+            <img src="../../public/img/ensalada.png" />
           </Col>
         </Row>
-        <ListaUsuarios />
+        
       </Container>
       
-      {JSON.stringify(user)}
+      
     </main>
   );
 }

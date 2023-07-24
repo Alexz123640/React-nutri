@@ -1,81 +1,102 @@
-export const enfermedades = [
+export const Enfermedades = [
+  {
+    enfermedad: "Ninguna",
+    ingredientesEvitar: [""],
+    ingredientesRecomendados: [""]
+  },
   {
     enfermedad: "Hipertension",
-    ingredientesEvitar: ["Sal", "Embutidos", "Chips", "Papas fritas", "Salsa de soja"]
+    ingredientesEvitar: ["Sal", "enpinacas", "zanahoria", "platano", "naranja"],
+    ingredientesRecomendados: ["Ajo", "Cebolla", "Aguacate", "Pescado", "Frutas","verdura"]
   },
   {
     enfermedad: "Diabetes",
-    ingredientesEvitar: ["Azucar", "Jarabe de maiz", "Bebidas azucaradas", "Harinas refinadas"]
+    ingredientesEvitar: ["espinacas", "fresas", "pimientos", "Harina","manzana"],
+    ingredientesRecomendados: ["Vegetal de hojas verde", "Aguacate", "Nuez", "Pescado", "Carne"]
   },
   {
     enfermedad: "Bronquitis",
-    ingredientesEvitar: ["tabaco", "Polvo"]
+    ingredientesEvitar: ["queso","leche", "aji","rocoto","cafe"],
+    ingredientesRecomendados: ["limon","naranja", "Pescado", "Pollo", "Jengibre"]
   },
   {
     enfermedad: "Gripe",
-    ingredientesEvitar: ["azucar", "Bebidas frias", "Alcohol", "lacteos"]
+    ingredientesEvitar: ["azucar", "refresco", "limon", "leche","naranja","salchichas"],
+    ingredientesRecomendados: ["limon","naranja", "Jengibre", "Caldo de pollo", "Ajo"]
   },
   {
     enfermedad: "Dolor de garganta",
-    ingredientesEvitar: ["Alimentos picantes", "Alimentos calientes", "alimentos frios", "citricos", "Bebidas carbonatadas"]
+    ingredientesEvitar: ["aji", "tomate", "zanahoria", "limon", "naranja"],
+    ingredientesRecomendados: ["Sopa", "papas", "Te", "Miel"]
   },
   {
     enfermedad: "Cardiovasculares",
-    ingredientesEvitar: ["carne", "lacteos", "frituras", "Sal", "Azucar"]
+    ingredientesEvitar: ["carne", "lacteo", "fritura", "Sal", "Azucar"],
+    ingredientesRecomendados: ["Pescado", "Aguacate", "Nuez", "Aceite de oliva", "Fruta","verdura"]
   },
   {
     enfermedad: "Enfermedad celiaca",
-    ingredientesEvitar: ["Trigo", "Cebada", "Centeno", "Pan", "Pasta", "Galletas", "Salsas y aderezos con gluten"]
+    ingredientesEvitar: ["Trigo", "Cebada", "Centeno", "Pan", "Pasta", "Galleta", "gluten"],
+    ingredientesRecomendados: ["Arroz", "papas", "Quinoa", "Verdura", "Fruta", "Carne"]
   },
   {
     enfermedad: "Intolerancia a la lactosa",
-    ingredientesEvitar: ["Leche", "Queso", "Yogur", "Helado", "Mantequilla"]
+    ingredientesEvitar: ["Leche", "Queso", "Yogur", "Helado", "Mantequilla"],
+    ingredientesRecomendados: ["Leche sin lactosa", "Leche vegetal", "Yogur sin lactosa", "Mantequilla sin lactosa", "Queso sin lactosa"]
   },
   {
     enfermedad: "Enfermedad renal cronica",
-    ingredientesEvitar: ["Sal", "Platano", "Naranja", "Espinacas", "Aguacate", "Alimentos ricos en potasio"]
+    ingredientesEvitar: ["Sal", "Platano", "Naranja", "Espinacas", "Aguacate", "Alimento rico en potasio"],
+    ingredientesRecomendados: ["Manzana", "Pera", "Ciruela", "Arandano", "Aguacate", "Vegetal","palta"]
   },
   {
     enfermedad: "Enfermedad de Crohn",
-    ingredientesEvitar: ["Nueces", "Semillas", "Frutas con piel", "Lacteos", "Comida picante", "Alimentos ricos en fibra"]
+    ingredientesEvitar: ["Nuez", "coliflor", "Lacteo", "picante", "brocoli","lenteja","aji","carne"],
+    ingredientesRecomendados: ["Pescado", "Huevos", "Arroz", "Pasta blanca", "Calabaza", "papas"]
   },
   {
     enfermedad: "Colitis ulcerosa",
-    ingredientesEvitar: ["Lacteos", "Frutas secas", "Legumbres", "Granos enteros", "Alimentos altos en fibra"]
+    ingredientesEvitar: ["leche", "queso", "lenteja", "cebolla", "limon"],
+    ingredientesRecomendados: ["Pescado", "Carne", "Verdura", "Fruta", "Calabaza"]
   },
   {
     enfermedad: "Anemia",
-    ingredientesEvitar: ["Carnes rojas", "Visceras", "Almejas", "Yema de huevo", "Cafe y te"]
+    ingredientesEvitar: ["Carne", "ajo", "espinacas", "huevos", "uvas","leche"],
+    ingredientesRecomendados: ["Carne", "Pollo", "Pavo", "Pescado", "Espinaca", "Lenteja", "Huevos"]
   },
   {
     enfermedad: "Enfermedad de Hashimoto",
-    ingredientesEvitar: ["Soja", "Col", "Brocoli", "Nabos", "Coliflor", "Frijoles"]
+    ingredientesEvitar: ["Soja", "queso", "Brocoli", "nuez", "Coliflor", "Frijol"],
+    ingredientesRecomendados: ["Pescado", "Huevos", "Arroz", "papas", "Fruta","verdura", "Aceite de oliva"]
   },
-
   {
     enfermedad: "Osteoporosis",
-    ingredientesEvitar: ["Cafe y te", "Bebidas alcoholicas", "Refrescos carbonatados"]
+    ingredientesEvitar: ["Cafe", "sal", "espinacas","naranja"],
+    ingredientesRecomendados: ["Leche", "Yogur", "Queso", "Salmon", "Brocoli", "Nuez", "Almendra"]
   },
   {
     enfermedad: "Gota",
-    ingredientesEvitar: ["Mariscos", "Visceras", "Carnes rojas", "Esparragos", "Coliflor", "Legumbres"]
+    ingredientesEvitar: ["Marisco", "Viscera", "Carne", "Esparrago", "Coliflor", "Legumbre"],
+    ingredientesRecomendados: ["Cereza", "Fresa", "Arandano", "Vegetal de hoja verde", "Pescado", "Huevos"]
   },
   {
     enfermedad: "Enfermedad hepatica",
-    ingredientesEvitar: ["Alcohol", "Grasas saturadas", "Sal", "Azucar anadido"]
+    ingredientesEvitar: ["salchichas", "Grasa", "galletas", "Azucar","queso"],
+    ingredientesRecomendados: ["Fruta y verdura fresca", "Pescado", "Huevos", "Aceite de oliva", "Cereal integral"]
   },
   {
     enfermedad: "Enfermedad pulmonar",
-    ingredientesEvitar: ["sodio", "frituras", "Embutidos", "Refrescos carbonatados"]
+    ingredientesEvitar: ["coliflor", "fritura", "Embutido", "brocoli","atun"],
+    ingredientesRecomendados: ["Pescado", "Fruta y verdura fresca", "Fruto seco", "Aceite de oliva", "Agua"]
   },
   {
     enfermedad: "Enfermedad de Alzheimer",
-    ingredientesEvitar: ["Grasas trans", "Grasas saturadas", "Azucar refinada", "Comida procesada"]
+    ingredientesEvitar: ["mantequilla", "galletas", "pan", "carne"],
+    ingredientesRecomendados: ["Pescado", "Nuez", "Fruta y verdura fresca", "Aceite de oliva", "Cereal integral"]
   },
-
   {
     enfermedad: "Sindrome del intestino irritable (SII)",
-    ingredientesEvitar: ["Cebolla", "Ajo", "Brocoli", "Repollo", "Legumbres", "Frituras"]
-  },
- 
+    ingredientesEvitar: ["Cebolla", "Ajo", "Brocoli", "Repollo", "Legumbre", "Fritura"],
+    ingredientesRecomendados: ["Pescado", "Pollo", "Arroz", "Zanahoria", "Calabaza", "papas"]
+  }
 ];
