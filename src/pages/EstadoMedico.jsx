@@ -19,6 +19,7 @@ const EstadoMedico = () => {
   const [alerg, setAlerg] = useState();
   
   const [cadenaenfer, setCadenaenfer] = useState(EstadosMedicoss[0].enfermedades);
+console.log(EstadosMedicoss[0].enfermedades)
 
   const inputAlergChange = (e) => {
     const alergias = e.target.value
@@ -157,6 +158,11 @@ console.log(platosPersona)
   const enfermedad = Enfermedades.find(
     (enfermedad) => enfermedad.enfermedad === cadenaenfer
   );
+  if(enfermedad == undefined){
+    enfermedad.toString();
+  }
+  console.log(enfermedad)
+
   console.log(cadenaenfer);
 
   // Filtrar los platos que no contengan ingredientes a evitar

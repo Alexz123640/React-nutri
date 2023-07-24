@@ -8,7 +8,7 @@ const DEFAULT_ESTADO_MEDICO =
   fecha_nacimiento: "",
   peso: "",
   altura: "",
-  enfermedades: "",
+  enfermedades: "Ninguna",
   alergias: [],
 }]
 
