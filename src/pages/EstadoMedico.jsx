@@ -16,7 +16,7 @@ const EstadoMedico = () => {
 
   const dispatch = useDispatch();
   
-  const [alerg, setAlerg] = useState();
+  const [alerg, setAlerg] = useState([""]);
   
   const [cadenaenfer, setCadenaenfer] = useState(EstadosMedicoss[0].enfermedades);
 console.log(EstadosMedicoss[0].enfermedades)
@@ -27,6 +27,7 @@ console.log(EstadosMedicoss[0].enfermedades)
       .map((alergia) => alergia.trim())
       .filter((alergia) => alergia !== ""); // Para filtrar posibles entradas vacías
     setAlerg(alergias);
+    
   };
 
   const handleEnviar = (event) => {
