@@ -70,6 +70,7 @@ console.log(EstadosMedicoss[0].enfermedades)
   };
 
   const alergiasEstadoMedico = EstadosMedicoss[0].alergias;
+  console.log(alergiasEstadoMedico)
 
 //CALCULO DE TIPO DE PERSONA----------------------------------------------------
 function calcularEstadoPesoAltura(altura, peso) {
@@ -125,20 +126,20 @@ let persona =calcularEstadoPesoAltura(EstadosMedicoss[0].altura, EstadosMedicoss
 const filtrarPlatosSegunPersona = (persona) => {
   console.log(persona)
   if (persona === "delgado") {
-    // Filtrar platos con calorias mayores a 15
+    
     return Platos.filter((plato) => parseFloat(plato.valorNutricional.proteinas) > 15);
   } else if (persona === "sobrepeso") {
-    // Filtrar platos con calorias menores a 15
+    
     return Platos.filter((plato) => parseFloat(plato.valorNutricional.calorias) < 220);
   } else {
-    // Si no es "delgado" ni "sobrepeso", devolver el mismo array de platos
+    
     return Platos;
   }
 };
 
 // Ejemplo de uso
 const platosPersona = filtrarPlatosSegunPersona(persona);
-console.log(platosPersona)
+
 
 //CALCULO DE PLATOS SIN ALERGIAS------------------------------------------------
   const platossinalergia = platosPersona.filter((plato) => {
@@ -167,13 +168,13 @@ console.log(platosPersona)
   const PlatosSinIngredientesEvitar = platossinalergia.filter((plato) => {
     const ingredientesEvitar = enfermedad.ingredientesEvitar;
     const platoIngredientes = Object.keys(plato.ingredientes);
-
+    
     // Verificar si el plato contiene ingredientes a evitar
     const contieneIngredientesEvitar = platoIngredientes.some((ingrediente) =>
       ingredientesEvitar.includes(ingrediente)
     );
 
-    // Si no contiene ingredientes a evitar, incluir el plato en el nuevo array
+    
     return !contieneIngredientesEvitar;
   });
   //-----------------------------------------------------

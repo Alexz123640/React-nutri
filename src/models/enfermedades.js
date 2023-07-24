@@ -1,8 +1,8 @@
 export const Enfermedades = [
   {
     enfermedad: "Ninguna",
-    ingredientesEvitar: [""],
-    ingredientesRecomendados: [""]
+    ingredientesEvitar: ["minguno"],
+    ingredientesRecomendados: ["ninguno"]
   },
   {
     enfermedad: "Hipertension",
