@@ -17,9 +17,10 @@ export default function Detalle() {
   };
 
   const { id } = useParams();
+  
   const Platos = useSelector(selectPlatos);
 
-  var plato = Platos.find((p) => p.id === id);
+  var plato = Platos.find((p) => p.id == id );
   console.log(plato);
 
   return (

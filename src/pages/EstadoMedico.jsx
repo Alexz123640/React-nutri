@@ -158,9 +158,7 @@ console.log(platosPersona)
   const enfermedad = Enfermedades.find(
     (enfermedad) => enfermedad.enfermedad === cadenaenfer
   );
-  if(enfermedad == undefined){
-    enfermedad.toString();
-  }
+  
   console.log(enfermedad)
 
   console.log(cadenaenfer);
@@ -200,6 +198,7 @@ console.log(platosPersona)
                 Fecha de Nacimiento
               </label>
               <input
+              
                 name="fecha_nacimiento"
                 type="date"
                 className="form-control"

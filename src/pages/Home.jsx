@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { Col, Container, Row } from "react-bootstrap";
 import BarraNavegacion from "../components/BarraNavegacion";
 import "../styles/components.css";
-import ListaUsuarios from "../components/ListaUsuarios";
 
 
 export default function Home() {
@@ -23,7 +22,7 @@ export default function Home() {
             </Link>
           </Col>
           <Col lg={6} className="">
-            <img src="../../public/img/ensalada.png" />
+            <img src="https://img.freepik.com/foto-gratis/ensalada-pollo-verduras-aceitunas_1220-4069.jpg?w=1380&t=st=1690227172~exp=1690227772~hmac=4646bbde81961cc216161fe8e5f7070ebdb8b910c3f9c9d8b98d13b583e659ac" />
           </Col>
         </Row>
         
