@@ -7,11 +7,13 @@ import { useState } from "react";
 import { rebornPlato, selectPlatos } from "../redux/states/platosSlice";
 import ListaEstadosMedicos from "../components/ListaEstadosMedicos";
 import { useNavigate } from "react-router-dom";
-import {enfermedades} from '../models/enfermedades'
+import {Enfermedades} from "../models/enfermedades";
 
-export const Enfermedades = enfermedades;
+export const enfermedades = Enfermedades;
+
 
 const EstadoMedico = () => {
+  console.log(enfermedades)
   const navigate = useNavigate();
   const Platos = useSelector(selectPlatos);
   const EstadosMedicoss = useSelector((store) => store.estados_medicos);
