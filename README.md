@@ -19,8 +19,8 @@ de registrar sus propias comidas, agregar ingredientes, descripciones y preparac
 ## Instalación
 Dentro de la carpeta del proyecto ejecutar:
 
-npm install
-npm run dev
+1. Instala las dependencias: `npm install`
+2. Ejecuta el servidor de desarrollo: `npm run dev`
 
 ## Ejecucion
 
