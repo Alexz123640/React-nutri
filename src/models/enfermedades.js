@@ -11,7 +11,7 @@ export const Enfermedades = [
   },
   {
     enfermedad: "Diabetes",
-    ingredientesEvitar: ["espinacas", "fresas", "pimientos", "Harina","manzana"],
+    ingredientesEvitar: ["espinacas", "fresas", "pimientos", "Harina","manzana","azucar"],
     ingredientesRecomendados: ["Vegetal de hojas verde", "Aguacate", "Nuez", "Pescado", "Carne"]
   },
   {
@@ -46,8 +46,8 @@ export const Enfermedades = [
   },
   {
     enfermedad: "Enfermedad renal cronica",
-    ingredientesEvitar: ["Sal", "Platano", "Naranja", "Espinacas", "Aguacate", "Alimento rico en potasio"],
-    ingredientesRecomendados: ["Manzana", "Pera", "Ciruela", "Arandano", "Aguacate", "Vegetal","palta"]
+    ingredientesEvitar: ["Sal", "Platano", "Naranja", "Espinacas", "aguacate", "Alimento rico en potasio"],
+    ingredientesRecomendados: ["Manzana", "Pera", "Ciruela", "Arandano",  "Vegetal","palta"]
   },
   {
     enfermedad: "Enfermedad de Crohn",

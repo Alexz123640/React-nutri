@@ -7,109 +7,9 @@ import { useState } from "react";
 import { rebornPlato, selectPlatos } from "../redux/states/platosSlice";
 import ListaEstadosMedicos from "../components/ListaEstadosMedicos";
 import { useNavigate } from "react-router-dom";
+import {enfermedades} from '../models/enfermedades'
 
-export const Enfermedades = [
-  {
-    enfermedad: "Ninguna",
-    ingredientesEvitar: ["minguno"],
-    ingredientesRecomendados: ["ninguno"]
-  },
-  {
-    enfermedad: "Hipertension",
-    ingredientesEvitar: ["Sal", "enpinacas", "zanahoria", "platano", "naranja"],
-    ingredientesRecomendados: ["Ajo", "Cebolla", "Aguacate", "Pescado", "Frutas","verdura"]
-  },
-  {
-    enfermedad: "Diabetes",
-    ingredientesEvitar: ["espinacas", "fresas", "pimientos", "Harina","manzana"],
-    ingredientesRecomendados: ["Vegetal de hojas verde", "Aguacate", "Nuez", "Pescado", "Carne"]
-  },
-  {
-    enfermedad: "Bronquitis",
-    ingredientesEvitar: ["queso","leche", "aji","rocoto","cafe"],
-    ingredientesRecomendados: ["limon","naranja", "Pescado", "Pollo", "Jengibre"]
-  },
-  {
-    enfermedad: "Gripe",
-    ingredientesEvitar: ["azucar", "refresco", "limon", "leche","naranja","salchichas"],
-    ingredientesRecomendados: ["limon","naranja", "Jengibre", "Caldo de pollo", "Ajo"]
-  },
-  {
-    enfermedad: "Dolor de garganta",
-    ingredientesEvitar: ["aji", "tomate", "zanahoria", "limon", "naranja"],
-    ingredientesRecomendados: ["Sopa", "papas", "Te", "Miel"]
-  },
-  {
-    enfermedad: "Cardiovasculares",
-    ingredientesEvitar: ["carne", "lacteo", "fritura", "Sal", "Azucar"],
-    ingredientesRecomendados: ["Pescado", "Aguacate", "Nuez", "Aceite de oliva", "Fruta","verdura"]
-  },
-  {
-    enfermedad: "Enfermedad celiaca",
-    ingredientesEvitar: ["Trigo", "Cebada", "Centeno", "Pan", "Pasta", "Galleta", "gluten"],
-    ingredientesRecomendados: ["Arroz", "papas", "Quinoa", "Verdura", "Fruta", "Carne"]
-  },
-  {
-    enfermedad: "Intolerancia a la lactosa",
-    ingredientesEvitar: ["Leche", "Queso", "Yogur", "Helado", "Mantequilla"],
-    ingredientesRecomendados: ["Leche sin lactosa", "Leche vegetal", "Yogur sin lactosa", "Mantequilla sin lactosa", "Queso sin lactosa"]
-  },
-  {
-    enfermedad: "Enfermedad renal cronica",
-    ingredientesEvitar: ["Sal", "Platano", "Naranja", "Espinacas", "Aguacate", "Alimento rico en potasio"],
-    ingredientesRecomendados: ["Manzana", "Pera", "Ciruela", "Arandano", "Aguacate", "Vegetal","palta"]
-  },
-  {
-    enfermedad: "Enfermedad de Crohn",
-    ingredientesEvitar: ["Nuez", "coliflor", "Lacteo", "picante", "brocoli","lenteja","aji","carne"],
-    ingredientesRecomendados: ["Pescado", "Huevos", "Arroz", "Pasta blanca", "Calabaza", "papas"]
-  },
-  {
-    enfermedad: "Colitis ulcerosa",
-    ingredientesEvitar: ["leche", "queso", "lenteja", "cebolla", "limon"],
-    ingredientesRecomendados: ["Pescado", "Carne", "Verdura", "Fruta", "Calabaza"]
-  },
-  {
-    enfermedad: "Anemia",
-    ingredientesEvitar: ["Carne", "ajo", "espinacas", "huevos", "uvas","leche"],
-    ingredientesRecomendados: ["Carne", "Pollo", "Pavo", "Pescado", "Espinaca", "Lenteja", "Huevos"]
-  },
-  {
-    enfermedad: "Enfermedad de Hashimoto",
-    ingredientesEvitar: ["Soja", "queso", "Brocoli", "nuez", "Coliflor", "Frijol"],
-    ingredientesRecomendados: ["Pescado", "Huevos", "Arroz", "papas", "Fruta","verdura", "Aceite de oliva"]
-  },
-  {
-    enfermedad: "Osteoporosis",
-    ingredientesEvitar: ["Cafe", "sal", "espinacas","naranja"],
-    ingredientesRecomendados: ["Leche", "Yogur", "Queso", "Salmon", "Brocoli", "Nuez", "Almendra"]
-  },
-  {
-    enfermedad: "Gota",
-    ingredientesEvitar: ["Marisco", "Viscera", "Carne", "Esparrago", "Coliflor", "Legumbre"],
-    ingredientesRecomendados: ["Cereza", "Fresa", "Arandano", "Vegetal de hoja verde", "Pescado", "Huevos"]
-  },
-  {
-    enfermedad: "Enfermedad hepatica",
-    ingredientesEvitar: ["salchichas", "Grasa", "galletas", "Azucar","queso"],
-    ingredientesRecomendados: ["Fruta y verdura fresca", "Pescado", "Huevos", "Aceite de oliva", "Cereal integral"]
-  },
-  {
-    enfermedad: "Enfermedad pulmonar",
-    ingredientesEvitar: ["coliflor", "fritura", "Embutido", "brocoli","atun"],
-    ingredientesRecomendados: ["Pescado", "Fruta y verdura fresca", "Fruto seco", "Aceite de oliva", "Agua"]
-  },
-  {
-    enfermedad: "Enfermedad de Alzheimer",
-    ingredientesEvitar: ["mantequilla", "galletas", "pan", "carne"],
-    ingredientesRecomendados: ["Pescado", "Nuez", "Fruta y verdura fresca", "Aceite de oliva", "Cereal integral"]
-  },
-  {
-    enfermedad: "Sindrome del intestino irritable (SII)",
-    ingredientesEvitar: ["Cebolla", "Ajo", "Brocoli", "Repollo", "Legumbre", "Fritura"],
-    ingredientesRecomendados: ["Pescado", "Pollo", "Arroz", "Zanahoria", "Calabaza", "papas"]
-  }
-];
+export const Enfermedades = enfermedades;
 
 const EstadoMedico = () => {
   const navigate = useNavigate();
@@ -117,11 +17,13 @@ const EstadoMedico = () => {
   const EstadosMedicoss = useSelector((store) => store.estados_medicos);
 
   const dispatch = useDispatch();
-  
-  const [alerg, setAlerg] = useState([""]);
-  
-  const [cadenaenfer, setCadenaenfer] = useState(EstadosMedicoss[0].enfermedades);
-console.log(EstadosMedicoss[0].enfermedades)
+
+  const [alerg, setAlerg] = useState();
+
+  const [cadenaenfer, setCadenaenfer] = useState(
+    EstadosMedicoss[0].enfermedades
+  );
+  console.log(EstadosMedicoss[0].enfermedades);
 
   const inputAlergChange = (e) => {
     const alergias = e.target.value
@@ -129,7 +31,6 @@ console.log(EstadosMedicoss[0].enfermedades)
       .map((alergia) => alergia.trim())
       .filter((alergia) => alergia !== ""); // Para filtrar posibles entradas vacías
     setAlerg(alergias);
-    
   };
 
   const handleEnviar = (event) => {
@@ -173,78 +74,81 @@ console.log(EstadosMedicoss[0].enfermedades)
   };
 
   const alergiasEstadoMedico = EstadosMedicoss[0].alergias;
-  console.log(alergiasEstadoMedico)
+  console.log(alergiasEstadoMedico);
 
-//CALCULO DE TIPO DE PERSONA----------------------------------------------------
-function calcularEstadoPesoAltura(altura, peso) {
-  if (altura >= 1.60 && altura <= 1.69) {
-    if (peso < 54) {
-      return 'delgado';
-    } else if (peso >= 54 && peso <= 68) {
-      return 'normal';
+  //CALCULO DE TIPO DE PERSONA----------------------------------------------------
+  function calcularEstadoPesoAltura(altura, peso) {
+    if (altura >= 1.6 && altura <= 1.69) {
+      if (peso < 54) {
+        return "delgado";
+      } else if (peso >= 54 && peso <= 68) {
+        return "normal";
+      } else {
+        return "sobrepeso";
+      }
+    } else if (altura >= 1.7 && altura <= 1.79) {
+      // Repetir el mismo patrón para los otros rangos de altura
+      if (peso < 59) {
+        return "delgado";
+      } else if (peso >= 59 && peso <= 74) {
+        return "normal";
+      } else {
+        return "sobrepeso";
+      }
+    } else if (altura >= 1.8 && altura <= 1.89) {
+      if (peso < 64) {
+        return "delgado";
+      } else if (peso >= 64 && peso <= 81) {
+        return "normal";
+      } else {
+        return "sobrepeso";
+      }
+    } else if (altura >= 1.9 && altura <= 1.99) {
+      if (peso < 69) {
+        return "delgado";
+      } else if (peso >= 69 && peso <= 87) {
+        return "normal";
+      } else {
+        return "sobrepeso";
+      }
+    } else if (altura >= 2.0 && altura <= 2.1) {
+      if (peso < 74) {
+        return "delgado";
+      } else if (peso >= 74 && peso <= 94) {
+        return "normal";
+      } else {
+        return "sobrepeso";
+      }
     } else {
-      return 'sobrepeso';
+      // Si la altura no está dentro de ningún rango válido, retornamos 'desconocido'
+      return "desconocido";
     }
-  } else if (altura >= 1.70 && altura <= 1.79) {
-    // Repetir el mismo patrón para los otros rangos de altura
-    if (peso < 59) {
-      return 'delgado';
-    } else if (peso >= 59 && peso <= 74) {
-      return 'normal';
-    } else {
-      return 'sobrepeso';
-    }
-  } else if (altura >= 1.80 && altura <= 1.89) {
-    if (peso < 64) {
-      return 'delgado';
-    } else if (peso >= 64 && peso <= 81) {
-      return 'normal';
-    } else {
-      return 'sobrepeso';
-    }
-  } else if (altura >= 1.90 && altura <= 1.99) {
-    if (peso < 69) {
-      return 'delgado';
-    } else if (peso >= 69 && peso <= 87) {
-      return 'normal';
-    } else {
-      return 'sobrepeso';
-    }
-  } else if (altura >= 2.00 && altura <= 2.10) {
-    if (peso < 74) {
-      return 'delgado';
-    } else if (peso >= 74 && peso <= 94) {
-      return 'normal';
-    } else {
-      return 'sobrepeso';
-    }
-  } else {
-    // Si la altura no está dentro de ningún rango válido, retornamos 'desconocido'
-    return 'desconocido';
   }
-}
-let persona =calcularEstadoPesoAltura(EstadosMedicoss[0].altura, EstadosMedicoss[0].peso)
+  let persona = calcularEstadoPesoAltura(
+    EstadosMedicoss[0].altura,
+    EstadosMedicoss[0].peso
+  );
 
-//CALCULO DE PLATOS SEGUN PERSONA------------------------------------------------
-const filtrarPlatosSegunPersona = (persona) => {
-  console.log(persona)
-  if (persona === "delgado") {
-    
-    return Platos.filter((plato) => parseFloat(plato.valorNutricional.proteinas) > 15);
-  } else if (persona === "sobrepeso") {
-    
-    return Platos.filter((plato) => parseFloat(plato.valorNutricional.calorias) < 220);
-  } else {
-    
-    return Platos;
-  }
-};
+  //CALCULO DE PLATOS SEGUN PERSONA------------------------------------------------
+  const filtrarPlatosSegunPersona = (persona) => {
+    console.log(persona);
+    if (persona === "delgado") {
+      return Platos.filter(
+        (plato) => parseFloat(plato.valorNutricional.proteinas) > 15
+      );
+    } else if (persona === "sobrepeso") {
+      return Platos.filter(
+        (plato) => parseFloat(plato.valorNutricional.calorias) < 220
+      );
+    } else {
+      return Platos;
+    }
+  };
 
-// Ejemplo de uso
-const platosPersona = filtrarPlatosSegunPersona(persona);
+  // Ejemplo de uso
+  const platosPersona = filtrarPlatosSegunPersona(persona);
 
-
-//CALCULO DE PLATOS SIN ALERGIAS------------------------------------------------
+  //CALCULO DE PLATOS SIN ALERGIAS------------------------------------------------
   const platossinalergia = platosPersona.filter((plato) => {
     const ingredientes = Object.keys(plato.ingredientes);
 
@@ -255,15 +159,15 @@ const platosPersona = filtrarPlatosSegunPersona(persona);
     }
     return true;
   });
-  
+
   console.log(platossinalergia);
   //-----------------------------------------------------
 
   const enfermedad = Enfermedades.find(
     (enfermedad) => enfermedad.enfermedad === cadenaenfer
   );
-  
-  console.log(enfermedad)
+
+  console.log(enfermedad);
 
   console.log(cadenaenfer);
 
@@ -271,19 +175,17 @@ const platosPersona = filtrarPlatosSegunPersona(persona);
   const PlatosSinIngredientesEvitar = platossinalergia.filter((plato) => {
     const ingredientesEvitar = enfermedad.ingredientesEvitar;
     const platoIngredientes = Object.keys(plato.ingredientes);
-    
+
     // Verificar si el plato contiene ingredientes a evitar
     const contieneIngredientesEvitar = platoIngredientes.some((ingrediente) =>
       ingredientesEvitar.includes(ingrediente)
     );
 
-    
     return !contieneIngredientesEvitar;
   });
   //-----------------------------------------------------
 
   const handleAvanzar = () => {
-    
     dispatch(rebornPlato(PlatosSinIngredientesEvitar));
     navigate("/catalogo");
   };
@@ -302,7 +204,6 @@ const platosPersona = filtrarPlatosSegunPersona(persona);
                 Fecha de Nacimiento
               </label>
               <input
-              
                 name="fecha_nacimiento"
                 type="date"
                 className="form-control"
